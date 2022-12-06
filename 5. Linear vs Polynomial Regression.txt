@@ -1,0 +1,43 @@
+#Linear Regression
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+dataset=pd.read_csv("C:\\Users\\SOUVIK MANDAL\\Desktop\\sem5\\ML lab\\position_salaries.csv")
+x = dataset.iloc[:,1:2].values
+y = dataset.iloc[:,2].values
+print(dataset)
+print(x)
+print(y)
+
+from sklearn.linear_model import LinearRegression
+
+lin_reg = LinearRegression()
+lin_reg.fit(x,y)
+
+plt.scatter(x,y,color='Red')
+plt.plot(x,lin_reg.predict(x),color='Blue')
+plt.title('Linear Regression')
+plt.xlabel('Position Level')
+plt.ylabel('Salary')
+plt.show()
+
+
+#Polynomial Regression
+
+from sklearn.preprocessing import PolynomialFeatures
+
+poly_reg = PolynomialFeatures(degree=4)
+x_poly = poly_reg.fit_transform(x)
+pol_reg = LinearRegression()
+pol_reg.fit(x_poly,y)
+
+plt.scatter(x,y,color='Red')
+plt.plot(x,pol_reg.predict(x_poly),color='Blue')
+plt.title("Polynomial Regression")
+plt.show()
+ 
+
+lin_reg.predict([[5.5]])
+pol_reg.predict(poly_reg.fit_transform([[5.5]]))

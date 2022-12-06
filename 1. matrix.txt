@@ -1,0 +1,43 @@
+#generate matrix
+import numpy as np
+np.random.seed(0)
+m = np.random.randn(15,15)
+m
+
+
+#convert this matrix into dataframe
+import pandas as pd
+
+df = pd.DataFrame(m)
+df
+
+
+#rename all the rows and columns
+row =[]
+col =[]
+
+for i in range(1,16):
+    col.append(f"col {i}")
+    row.append(f"row {i}")
+    
+df.columns=col
+df.index=row
+df
+
+
+#sort the data values based on the last column
+df.sort_values(by=["col 15"],ascending = True,inplace=True)
+df
+
+
+#drop the first columns of the dataframe
+df.drop(columns=["col 1"],inplace=True)
+df
+
+
+
+#add one more column on the dataframe
+np.random.seed(1)
+n = np.random.randn(15)
+df["new col"] = n
+df

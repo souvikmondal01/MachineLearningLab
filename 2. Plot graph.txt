@@ -1,0 +1,9 @@
+#plot y=4x+5
+import matplotlib.pyplot as plt
+x = range(5)
+plt.plot(x,[x1 * 4 + 5 for x1 in x])
+plt.xlabel("x axis")
+plt.ylabel("y axis")
+plt.title("Graph Plot")
+plt.savefig("Graph.png")
+plt.show()
